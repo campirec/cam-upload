@@ -1,0 +1,10 @@
+POST /upload-simple HTTP/1.1
+Host: localhost:3000
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="panda.jpg"
+Content-Type: image/jpeg
+
+< /Users/chenjian/projects/cam-upload/apps/upload-front-end/src/assets/panda.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
