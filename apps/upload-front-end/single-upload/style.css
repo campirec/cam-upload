@@ -1,11 +1,63 @@
+/* :root {
+  --upload-progress: '0';
+} */
+
+/* 在 :root 定义默认值 */
+:root {
+  --upload-progress: 0;
+}
+
 .upload-container {
   width: 300px;
   height: 300px;
   border: 1px solid #ddd;
   border-radius: 8px;
+  position: relative;
+}
+
+.upload-container.select .upload-select {
+  visibility: visible;
+}
+.upload-container.select .upload-progress {
+  visibility: hidden;
+}
+.upload-container.select .upload-result {
+  visibility: hidden;
+}
+.upload-container.select img {
+  display: none;
+}
+
+.upload-container.progress .upload-select {
+  visibility: hidden;
+}
+.upload-container.progress .upload-progress {
+  visibility: visible;
+}
+.upload-container.progress .upload-result {
+  visibility: hidden;
+}
+.upload-container.progress img {
+  display: block;
+}
+
+.upload-container.result .upload-select {
+  visibility: hidden;
+}
+.upload-container.result .upload-progress {
+  visibility: hidden;
+}
+.upload-container.result .upload-result {
+  visibility: visible;
+}
+.upload-container.result img {
+  display: block;
 }
 
 .upload-select {
+  visibility: hidden;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -29,7 +81,9 @@
 }
 
 .upload-progress {
-  position: relative;
+  visibility: hidden;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -39,11 +93,11 @@
   justify-content: center;
 }
 
-.upload-progress img {
+.upload-container img {
+  display: none;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  display: block;
 }
 
 .upload-progress .overlay {
@@ -62,7 +116,13 @@
 }
 
 .upload-progress .progress-text {
+  display: block;
   font-size: 14px;
+  counter-reset: progress var(--upload-progress);
+}
+
+.upload-progress .progress-text::after {
+  content: "上传中... " counter(progress) "%";
 }
 
 .upload-progress .cancel-btn {
@@ -78,4 +138,8 @@
 
 .upload-progress .cancel-btn:hover {
   opacity: 0.8;
+}
+
+.upload-result {
+  visibility: hidden;
 }

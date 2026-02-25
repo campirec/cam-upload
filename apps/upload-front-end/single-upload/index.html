@@ -9,16 +9,20 @@
 <body>
   <h1>单文件上传</h1>
 
-  <section class="upload-container">
-    <div class="upload-select"></div>
+  <section class="upload-container select">
+    <div class="upload-select">
+      <label for="file-input">
+        <input type="file" id="file-input" accept="image/*" hidden />
+      </label>
+    </div>
     <div class="upload-progress">
-      <img src="" alt="上传的图片">
       <div class="overlay">
-        <span class="progress-text">上传中... 0%</span>
+        <span class="progress-text"></span>
         <button type="button" class="cancel-btn">取消上传</button>
       </div>
     </div>
     <div class="upload-result"></div>
+    <img class="preview-img" src="" alt="上传的图片">
   </section>
 
   <script type="module" src="single-upload.ts"></script>
